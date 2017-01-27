@@ -16,15 +16,17 @@ void printBoard()
 
 int main()
 {
-  int turn = 1;
+  int turn = 0;
   bool gameOver = false;
+  int rowIn;
+  int colIn;
 
   std::cout << "Welcome to the game!" << std::endl;
 
   while(gameOver == false)
   {
     printBoard();
-    if(turn == 1)
+    if(turn == 0)
     {
       std::cout << "IT is Player One's Turn!" << std::endl;
     }
@@ -34,7 +36,19 @@ int main()
     }
 
     //do the turn
+    std::cout << "Pick a Row: ";
+    std::cin >> rowIn;
+    std::cout << "Pick a Collumn: ";
+    std::cin >> colIn;
 
+    if(turn == 0)
+    {
+      board[rowIn][colIn] = 'X';
+    }
+    else
+    {
+      board[rowIn][colIn] = 'O';
+    }
     turn++;
     turn%= 2;
   }
