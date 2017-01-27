@@ -1,21 +1,9 @@
 #include <iostream>
-
-char board[3][3] = {{' ',' ',' '},{' ',' ',' '},{' ',' ',' '}};
-
-void printBoard()
-{
-  for(int i=0; i<3; i++)
-  {
-    for(int j=0; j<3; j++)
-    {
-      std::cout << board[i][j];
-    }
-    std::cout << std::endl;
-  }
-}
+#include "game,hpp"
 
 int main()
 {
+  Game myGame;
   int turn = 0;
   bool gameOver = false;
   int rowIn;
@@ -25,7 +13,7 @@ int main()
 
   while(gameOver == false)
   {
-    printBoard();
+    myGame.printBoard();
     if(turn == 0)
     {
       std::cout << "IT is Player One's Turn!" << std::endl;
@@ -41,14 +29,8 @@ int main()
     std::cout << "Pick a Collumn: ";
     std::cin >> colIn;
 
-    if(turn == 0)
-    {
-      board[rowIn][colIn] = 'X';
-    }
-    else
-    {
-      board[rowIn][colIn] = 'O';
-    }
+    myGame.makeMove(turn, rowIn, colIn);
+
     turn++;
     turn%= 2;
   }
